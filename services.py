@@ -15,7 +15,6 @@ def actualizar_reglas(req):
     return {"estado": "actualizado", "reglas": req.reglas}
 
 def autenticar_usuario(req: AutenticacionRequest):
-    # Buscar un usuario en el diccionario cuyo nombre coincida
     for token, usuario in fake_users.items():
         if usuario.nombre == req.nombre_usuario:
             if usuario.contrasena == req.contrasena:
@@ -24,10 +23,7 @@ def autenticar_usuario(req: AutenticacionRequest):
                 raise HTTPException(status_code=401, detail="Contraseña incorrecta")
     
     raise HTTPException(status_code=401, detail="Usuario no encontrado")
-    
-    # Simulamos token (en producción deberías usar JWT)
-    token = "token_{usuario.nombre}"
-    return {"token": token}
+
 
 def autorizar_acceso(req, user):
     if user.rol == req.rol_usuario:

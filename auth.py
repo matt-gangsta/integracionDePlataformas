@@ -4,7 +4,6 @@ from models import Usuario
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-# Diccionario simulado: token -> usuario
 fake_users = {
     "token_admin": Usuario(nombre="admin", rol="Administrador", contrasena="adminpass"),
     "token_orq": Usuario(nombre="orq", rol="Orquestador", contrasena="orqpass"),

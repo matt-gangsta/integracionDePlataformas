@@ -5,15 +5,6 @@ from services import orquestar_servicio, obtener_info_servicio, registrar_servic
 
 app = FastAPI()
 
-usuarios_db = {
-    "admin": Usuario(nombre="admin", rol="Administrador", contrasena="adminpass")
-}
-
-@app.on_event("startup")
-async def crear_usuario_predeterminado():
-    if "nuevo_usuario" not in usuarios_db:
-        usuarios_db["nuevo_usuario"] = Usuario(nombre="nuevo_usuario", rol="Orquestador", contrasena="secreta")
-
 @app.get("/usuarios")
 def obtener_usuarios():
     return usuarios_db
