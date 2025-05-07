@@ -5,10 +5,6 @@ from services import orquestar_servicio, obtener_info_servicio, registrar_servic
 
 app = FastAPI()
 
-@app.get("/usuarios")
-def obtener_usuarios():
-    return usuarios_db
-
 @app.post("/orquestar")
 def orquestar(req: OrquestarRequest, user: Usuario = Depends(get_current_user)):
     check_role(user, ["Orquestador", "Administrador"])
